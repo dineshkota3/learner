@@ -12,8 +12,8 @@ class Settings(BaseSettings):
 
     # Database
     # For Render, set DATABASE_URL environment variable to:
-    # postgresql+asyncpg://dinesh:YOUR_PASSWORD@dpg-d8li8ht8nd3s73e5aul0-a/language_database
-    database_url: str = "postgresql+asyncpg://user:password@localhost:5432/learner"
+    # postgresql+psycopg://dinesh:YOUR_PASSWORD@dpg-d8li8ht8nd3s73e5aul0-a/language_database
+    database_url: str = "postgresql+psycopg://user:password@localhost:5432/learner"
 
     # PostgreSQL connection details (can be used to construct DATABASE_URL)
     postgres_host: str = "localhost"

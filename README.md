@@ -95,7 +95,7 @@ The application will be available at `http://localhost:8000`
 1. Create a new Web Service on Render
 2. Connect your GitHub repository
 3. Set the following environment variables:
-   - `DATABASE_URL`: `postgresql+asyncpg://dinesh:YOUR_PASSWORD@dpg-d8li8ht8nd3s73e5aul0-a/language_database`
+   - `DATABASE_URL`: `postgresql+psycopg://dinesh:YOUR_PASSWORD@dpg-d8li8ht8nd3s73e5aul0-a/language_database`
    - `PYTHON_VERSION`: `3.12.11`
 4. Build Command: `poetry install`
 5. Start Command: `poetry run uvicorn main:app --host 0.0.0.0 --port $PORT`
