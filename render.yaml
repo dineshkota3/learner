@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: learner-api
+    env: python
+    buildCommand: poetry install
+    startCommand: poetry run uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.11
+      - key: DATABASE_URL
+        fromDatabase:
+          name: language_database
+          property: connectionString
+        # You can also manually set:
+        # value: postgresql+asyncpg://dinesh:YOUR_PASSWORD@dpg-d8li8ht8nd3s73e5aul0-a/language_database
+
+databases:
+  - name: language_database
+    databaseName: language_database
+    user: dinesh
