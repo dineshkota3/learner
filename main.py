@@ -1,5 +1,5 @@
 from contextlib import asynccontextmanager
-
+import subprocess
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -9,7 +9,13 @@ from src.core.config import settings
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Startup
+    # Startup - Run database migrations
+    if not settings.debug:  # Only run in production
+        try:
+            subprocess.run(["alembic", "upgrade", "head"], check=True)
+            print("Database migrations completed successfully")
+        except subprocess.CalledProcessError as e:
+            print(f"Migration failed: {e}")
     yield
     # Shutdown
     pass
