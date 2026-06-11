@@ -3,7 +3,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from src.api.controllers import health_controller
+from src.api.controllers import health_controller, language_controller
 from src.core.config import settings
 
 
@@ -32,6 +32,7 @@ app.add_middleware(
 
 # Controllers
 app.include_router(health_controller)
+app.include_router(language_controller)
 
 
 @app.get("/")
